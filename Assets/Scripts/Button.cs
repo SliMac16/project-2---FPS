@@ -11,11 +11,13 @@ public class Button : MonoBehaviour
     public GameObject exit;
     public Transform player;
     public GameObject text;
+    public GameObject gatlingGun;
 
 
     private void Start()
     {
         text.SetActive(false);
+        gatlingGun.SetActive(false);
         myRenderer = gameObject.GetComponent<Renderer>();
         myRenderer.material.color = red;
         
@@ -23,6 +25,7 @@ public class Button : MonoBehaviour
 
     private void Update()
     {
+        //checking distance between player and the button;
         float distance = Vector3.Distance(player.position, transform.position);
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -35,12 +38,16 @@ public class Button : MonoBehaviour
                 if (text != null)
                 {
                     text.SetActive(true);
+                    exit.SetActive(false);
+
                 }
             }
         }
         if (button == true)
         {
             exit.SetActive(false);
+            if(gatlingGun != null)
+                gatlingGun.SetActive(true);
         }
     }
     

@@ -34,6 +34,8 @@ public class GatlingGun : MonoBehaviour
 
     public AudioSource shootingSound;
 
+    public Target target;
+
     private void Awake()
     {
         shootingSound.Stop();
@@ -43,6 +45,7 @@ public class GatlingGun : MonoBehaviour
         // Set the firing range distance
         player = PlayerManager.instance.player.transform;
         playerHealth = GameObject.Find("First Person Player").GetComponent<Health>();
+        target = GetComponent<Target>();
     }
 
     void Update()
@@ -81,7 +84,7 @@ public class GatlingGun : MonoBehaviour
             }
             go_baseRotation.transform.LookAt(baseTargetPostition);
             go_GunBody.transform.LookAt(gunBodyTargetPostition);
-            if (timeBetweenAttacks < timer)
+            if (timeBetweenAttacks < timer && target.health > 0)
             {
                 Attack(damage);
                 

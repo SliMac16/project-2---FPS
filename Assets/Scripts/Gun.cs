@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public Animator animator;
-    private bool isScoped = false;
+    
     public Camera fpsCamera;
     public AudioSource shootSound;
 

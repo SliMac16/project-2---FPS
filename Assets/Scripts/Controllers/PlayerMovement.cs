@@ -48,8 +48,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded)
         {
-            speed = 20f;
+            speed = 17.5f;
         }
-        else speed = 15f; 
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        { 
+
+            speed = 10f;
+        } 
     }
 }

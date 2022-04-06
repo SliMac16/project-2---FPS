@@ -14,7 +14,6 @@ public class Zombie : MonoBehaviour
     Transform player;
     NavMeshAgent agent;
     private Health playerHealth;
-    public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
     float timer;
@@ -24,16 +23,6 @@ public class Zombie : MonoBehaviour
     public AudioClip idle;
     public AudioSource attack;
     public AudioClip death;
-    
-
-    
-    
-    
-    
-    
-
-
-
     // Start is called before the first frame update
 
     private void Awake()
@@ -42,7 +31,6 @@ public class Zombie : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         target = GetComponent<Target>();
         audio = GetComponent<AudioSource>();
-        
     }
     void Start()
     {
@@ -89,10 +77,13 @@ public class Zombie : MonoBehaviour
 
         if (target.health <= 0)
         {
+            
             audio.Stop();
             animator.SetBool("Dead", true);
-
-            audio.PlayOneShot(death,1.0f);
+            if (!audio.isPlaying)
+            {
+                audio.PlayOneShot(death, 1.0f);
+            }
             
         }
         
